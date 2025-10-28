@@ -1,4 +1,85 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FRANCIS COFFEE SHOP</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  body { font-family: Arial, sans-serif; margin:0; background:#f7f7f7; text-align:center; }
+  header { background:#6f4e37; color:white; padding:20px; font-family: 'Anton', sans-serif; font-size:2em; }
+  .container { display:flex; flex-wrap:wrap; justify-content:center; padding:20px; gap:20px; }
+  .product { background:white; padding:10px; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.2); width:200px; text-align:center; }
+  .product img { width:100%; border-radius:10px; }
+  footer { background:#6f4e37; color:white; padding:10px; margin-top:20px; }
+  .login-container { margin:20px auto; width:300px; background:#fff; padding:20px; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.2);}
+  .login-container input { width:90%; padding:10px; margin:10px 0; border-radius:5px; border:1px solid #ccc;}
+  .login-container button { padding:10px 20px; border:none; border-radius:5px; background:#6f4e37; color:white; cursor:pointer; }
+</style>
+</head>
+<body>
+
+<header>FRANCIS COFFEE SHOP</header>
+
+<div class="login-container" id="loginForm">
+  <h3>Login</h3>
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+</div>
+
+<div class="container" id="products" style="display:none;">
+
+  <div class="product">
+    <img src="coffee1.jpg" alt="Espresso">
+    <h3>Espresso</h3>
+    <p>₱150.00</p>
+  </div>
+
+  <div class="product">
+    <img src="coffee2.jpg" alt="Cappuccino">
+    <h3>Cappuccino</h3>
+    <p>₱180.00</p>
+  </div>
+
+  <div class="product">
+    <img src="coffee3.jpg" alt="Latte">
+    <h3>Latte</h3>
+    <p>₱200.00</p>
+  </div>
+
+  <div class="product">
+    <img src="coffee4.jpg" alt="Mocha">
+    <h3>Mocha</h3>
+    <p>₱220.00</p>
+  </div>
+
+</div>
+
+<footer>
+ Francis Catalla ICT 11 - 4
+</footer>
+
+<script>
+function login() {
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+
+  // Simpleng demo login
+  if(username === 'admin' && password === '1234') {
+    alert('Login successful!');
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('products').style.display = 'flex';
+  } else {
+    alert('Invalid username or password');
+  }
+}
+</script>
+
+</body>
+</html>
+
+
 <html lang="en-PH">
 <head>
 <meta charset="UTF-8">
@@ -107,6 +188,32 @@ function addToCart(name, price){
   document.getElementById('itemCount').textContent = itemCount;
   document.getElementById('totalPrice').textContent = totalPrice;
   alert(`${name} added to cart!`);
+}
+
+function buyNow(name, price){
+  if(!loggedIn){ alert("Please login first!"); return; }
+  alert(`Redirecting to purchase ${name} for ₱${price}`);
+  window.open("https://shopee.ph/franciscoffeeshop-antipolo", "_blank");
+}
+
+function clearCart(){
+  if(!loggedIn){ alert("Please login first!"); return; }
+  itemCount = 0;
+  totalPrice = 0;
+  document.getElementById('itemCount').textContent = itemCount;
+  document.getElementById('totalPrice').textContent = totalPrice;
+  alert("Cart cleared! 🧹");
+}
+</script>
+
+<footer>
+  © 2025 Francis Coffee Shop
+</footer>
+
+</body>
+</html>
+
+
 }
 
 function buyNow(name, price){
